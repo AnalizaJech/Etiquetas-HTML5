@@ -11,9 +11,8 @@ validate:
 	@trap "rm -f $(VALIDATOR_SCRIPT)" EXIT INT TERM HUP  # Limpieza segura
 	@curl -s -o $(VALIDATOR_SCRIPT) $(VALIDATOR_URL)
 	@chmod +x $(VALIDATOR_SCRIPT)
-	@STUDENT_EMAIL=$(STUDENT_EMAIL) $(VALIDATOR_SCRIPT)
-# @$(VALIDATOR_SCRIPT)
-
+	@echo "Usando correo: $$STUDENT_EMAIL"
+	@STUDENT_EMAIL=$$STUDENT_EMAIL bash $(VALIDATOR_SCRIPT)
 
 # Limpieza manual (opcional)
 clean:
